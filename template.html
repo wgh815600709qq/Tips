@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id='div'>
+	
+</div>
+<script type="text/javascript" charset="utf-8" async defer>
+	//异步or并行
+
+function compile(template){
+  var evalExpr = /<%=(.+?)%>/g;//匹配<%=%>模式
+  var expr = /<%([\s\S]+?)%>/g;
+
+  console.log('evalExpr',evalExpr)
+  console.log('expr',expr)
+  template = template
+    .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')//=>将标签包裹元素转换<li><%= 变量值%></li>转变成
+    																										//<li>')
+    																										// echo (变量值)
+    																										// echo('<li>     这种模式
+    .replace(expr, '`); \n $1 \n  echo(`');							//=>将<%表达式%>转换成 ')
+    																										//表达式
+    																										//echo（'          这种模式
+    console.log(template)
+
+  template = 'echo(`' + template + '`);';
+
+  var script =
+  `(function parse(data){
+    var output = "";
+
+    function echo(html){
+      output += html;
+    }
+
+    ${ template }
+
+    return output;
+  })`;
+
+  return script;
+}
+
+
+var template = `
+<ul>
+  <% for(var i=0; i < data.supplies.length; i++) { %>
+    <li><%= data.supplies[i] %></li>
+  <% } %>
+</ul>
+`;
+var div = document.getElementById('div')
+var parse = eval(compile(template));//eval函数释放parse方法
+div.innerHTML = parse({ supplies: [ "broom", "mop", "cleaner" ] });
+
+</script>
+</body>
+</html>
+
+
+<!-- 
+1、模板编译思路
+2、el表达式
+3、eval()+代码块
+ -->
