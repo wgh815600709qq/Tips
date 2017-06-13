@@ -1,19 +1,21 @@
-#1.在代码运行时候对于代码规范报错，vue官网推荐时候询问eslint？yes即可
+# 在sublime编辑器里面采用eslint代码规范校验报错[http://www.jianshu.com/p/c94db34e525b]
 
-#2.在sublime编辑器里面对于代码规范报错[http://www.jianshu.com/p/c94db34e525b]
+### 1.必要的依赖
 
-###1.必要的依赖
-
-    `npm install -g eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise`
+ ``npm install -g eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise``
     
-    在全局与项目局部都安装 
+ 在全局与项目局部都安装 
 
-    `npm install --save-dev eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise`
+`npm install --save-dev eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise`
 
-###2.测试eslint test.js会提示一些未安装的依赖包
+### 2.测试依赖是否安装完全，eslint test.js（自定义一个不规范的文件.js .vue）会提示一些未安装的依赖包
     npm install -g/--save-dev  eslint-plugin-import/eslint-plugin-node
-    
-###3.sublime-text 的sublimeLinter配置package setting里面的setting user
+ 
+### 3.直到 eslint test.js 能正确检测代码会显示几个报错为止
+
+### 4.sublime-text的相关设置：
+    `npm install sublimeLinter/sublimeLinter-contrib-eslint`
+### 5.sublime-text 的sublimeLinter配置package setting里面的setting user(max电脑) [可查看配置]
 `{
     "user": {
         "debug": true,
@@ -71,3 +73,41 @@
         "wrap_find": true
     }
 }`
+
+### 6.sublime-text里面文件点右键sublimeLinter设置lint mode 选择 save only ，保存时候可见
+
+
+### 7.配置.eslintrc文件（可见eslint官网）
+推荐配置 eslint --intit  => popular... => standard => javascropt
+
+然后生成一个.eslintrc。js在根目录
+
+推荐修改
+
+// http://eslint.org/docs/user-guide/configuring
+
+module.exports = {
+  root: true,
+  parser: 'babel-eslint',
+  parserOptions: {
+    sourceType: 'module'
+  },
+  env: {
+    browser: true,
+  },
+  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
+  extends: 'standard',
+  // required to lint *.vue files
+  plugins: [
+    'html'
+  ],
+  // add your custom rules here
+  'rules': {
+    // allow paren-less arrow functions
+    'arrow-parens': 0,
+    // allow async-await
+    'generator-star-spacing': 0,
+    // allow debugger during development
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+  }
+}
