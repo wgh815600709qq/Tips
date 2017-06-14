@@ -12,7 +12,11 @@
     
  在全局与项目局部都安装 
 
-`npm install --save-dev eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise`
+```
+
+npm install --save-dev eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise
+
+```
 
 ### 2.测试依赖是否安装完全，eslint test.js（自定义一个不规范的文件.js .vue）会提示一些未安装的依赖包
    ```
@@ -24,11 +28,12 @@
 
 ### 4.接下来，需要对sublime-text进行相关包的安装：
    按ctrl+shift+P 打开包仓库 输入 'install package'安装下面2个包
-    ```
+   ```
     install package sublimeLinter/sublimeLinter-contrib-eslint
     ```
 ### 5.sublime-text 的sublimeLinter配置package setting里面的setting user(max电脑) [可选操作]
 ```
+
 {
     "user": {
         "debug": true,
@@ -86,6 +91,7 @@
         "wrap_find": true
     }
 }
+
 ```
 
 ### 6.设置检验报错方式：sublime-text里面文件点右键sublimeLinter设置lint mode 选择 save only ，保存时候可见
@@ -100,6 +106,7 @@
 
 // http://eslint.org/docs/user-guide/configuring
 ```
+
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -125,4 +132,5 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
+
 ```
