@@ -3,7 +3,9 @@
 ## 经典案例：封装vue的组件时候，有一些交互需要用到第三方ui库 如element.ui，调用方式往往有this.$nofity(xxx)
 
 ### 经典代码  在父组件中传入 子组件执行的方法
+
 //父组件中传入
+
 ` data () {
     return {
       rules:[
