@@ -19,10 +19,11 @@ npm install --save-dev eslint/babel-eslint/eslint-plugin-html/eslint-config-stan
 ```
 
 ### 2.测试依赖是否安装完全，eslint test.js（自定义一个不规范的文件.js .vue）会提示一些未安装的依赖包
-   ```
+```
+   
    npm install -g/--save-dev  eslint-plugin-import/eslint-plugin-node
    (可能会检测出上面这些包未安装)
-   ```
+```
  
 ### 3.直到 eslint test.js 能正确检测代码会显示几个报错，则说明你的依赖包已经安装完全，可以正确进行代码规范检测了
 
