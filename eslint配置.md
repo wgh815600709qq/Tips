@@ -1,22 +1,35 @@
-# 在sublime编辑器里面采用eslint代码规范校验报错[http://www.jianshu.com/p/c94db34e525b]
+## 配置eslint的目的：在sublime text3编译代码保存时候，自动显示语法错误与代码书写不规范问题
+
+### 在sublime编辑器里面采用eslint代码规范校验报错 
+推荐观看[http://www.jianshu.com/p/c94db34e525b]
 
 ### 1.必要的依赖
 
- ``npm install -g eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise``
+ ```
+ npm install -g eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise
+ (依次安装)
+ ```
     
  在全局与项目局部都安装 
 
 `npm install --save-dev eslint/babel-eslint/eslint-plugin-html/eslint-config-standard/eslint-plugin-standard/eslint-plugin-promise`
 
 ### 2.测试依赖是否安装完全，eslint test.js（自定义一个不规范的文件.js .vue）会提示一些未安装的依赖包
-    npm install -g/--save-dev  eslint-plugin-import/eslint-plugin-node
+   ```
+   npm install -g/--save-dev  eslint-plugin-import/eslint-plugin-node
+   (可能会检测出上面这些包未安装)
+   ```
  
-### 3.直到 eslint test.js 能正确检测代码会显示几个报错为止
+### 3.直到 eslint test.js 能正确检测代码会显示几个报错，则说明你的依赖包已经安装完全，可以正确进行代码规范检测了
 
-### 4.sublime-text的相关设置：
-    `npm install sublimeLinter/sublimeLinter-contrib-eslint`
-### 5.sublime-text 的sublimeLinter配置package setting里面的setting user(max电脑) [可查看配置]
-`{
+### 4.接下来，需要对sublime-text进行相关包的安装：
+   按ctrl+shift+P 打开包仓库 输入 'install package'安装下面2个包
+    ```
+    install package sublimeLinter/sublimeLinter-contrib-eslint
+    ```
+### 5.sublime-text 的sublimeLinter配置package setting里面的setting user(max电脑) [可选操作]
+```
+{
     "user": {
         "debug": true,
         "delay": 0.25,
@@ -72,20 +85,21 @@
         "warning_color": "DDB700",
         "wrap_find": true
     }
-}`
+}
+```
 
-### 6.sublime-text里面文件点右键sublimeLinter设置lint mode 选择 save only ，保存时候可见
+### 6.设置检验报错方式：sublime-text里面文件点右键sublimeLinter设置lint mode 选择 save only ，保存时候可见
 
 
 ### 7.配置.eslintrc文件（可见eslint官网）
-推荐配置 eslint --intit  => popular... => standard => javascropt
+推荐配置：打开文件对应的命令行 eslint --intit  => use a popular style => standard => javascropt
 
 然后生成一个.eslintrc。js在根目录
 
 推荐修改
 
 // http://eslint.org/docs/user-guide/configuring
-
+```
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -111,3 +125,4 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
+```
