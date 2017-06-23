@@ -31,6 +31,7 @@
 ```
 import Vuex from 'vuex'
 import Vue from 'vue'
+import getters from './getters'
 import module1 from './modules/module1.js'
 import module2 from './modules/module2.js'
 Vue.use(Vuex)
@@ -38,7 +39,8 @@ const store = new Vuex.Store({
 	modules: {
 		module1,
 		module2
-	}
+	},
+	getters
 })
 export default store
 
@@ -53,11 +55,53 @@ export const isEmptySearchKey = (store) => {
 或者
 
 const getter = {
-  getName=name=>state.name
+  getName:name => state.module1.name,
+  getAge: age => state.module.age
 }
 export default getter
 ```
 
-#### 1.4 actions.js
+#### 1.4 modules1.js
 
-{commit}),
+```
+
+const form = {
+  state: {
+    price: 0, // 会员信息售卡金额
+    memberInfo: []
+  },
+  mutations: {
+    SET_CARDINFO: (state, info) => {
+      state.price = info.Product.price
+    },
+    SET_MEMBERINFO: (state, info) =>{
+      state.memberInfo = info
+    }
+  },
+  actions: {
+    // 会员级别选项改变数据
+    setCardInfo ({ commit }, value) {
+      commit('SET_CARDINFO', value)
+    },
+    setMemberInfo ({ commit }, value) {
+      commit('SET_MEMBERINFO', value)
+    }
+  }
+}
+export default form
+
+```
+#### 1.5 调用
+
+```
+	import { mapGetters } from 'vuex'
+	
+	
+	computed: {
+	    ...mapGetters([
+	      'memberInfo' //  可以用this.memberInfo取到     
+	   ])
+	}
+	
+```
+
