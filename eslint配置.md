@@ -41,7 +41,7 @@ npm install -g eslint-plugin-node
 ### 6.配置.eslintrc文件（可见eslint官网）
 推荐配置：打开文件对应的命令行 eslint --intit  => use a popular style => standard => javascropt
 
-然后生成一个.eslintrc。js在根目录
+然后生成一个.eslintrc.js在根目录
 
 推荐修改
 
