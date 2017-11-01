@@ -30,7 +30,8 @@ npm install -g eslint-plugin-node
 ### 4.接下来，需要对sublime-text进行相关包的安装：
    按ctrl+shift+P 打开包仓库 输入 'install package'安装下面2个包
 ```
-    install package sublimeLinter/sublimeLinter-contrib-eslint
+    install package sublimeLinter
+    install package sublimeLinter-contrib-eslint
 ```
 
 
