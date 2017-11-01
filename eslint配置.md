@@ -1,10 +1,7 @@
 ## 配置eslint的目的：
-在sublime text3编译代码保存时候，自动显示语法错误与代码书写不规范问题
+在sublime text3 编译代码保存时候，自动检测语法错误与代码书写不规范问题，是团队合作与代码规范的利器
 
-### 在sublime编辑器里面采用eslint代码规范校验报错 
-推荐链接[http://www.jianshu.com/p/c94db34e525b]
-
-### 1.必要的依赖
+### 1.必要的依赖（全局安装）
 
  ```
 npm install -g eslint
@@ -17,11 +14,9 @@ npm install -g eslint-plugin-import
 npm install -g eslint-plugin-node
  (依次安装)
  ```
-    
 
-### 2.测试依赖是否安装完全，eslint  test.js（自定义一个不规范的文件.js .vue）会提示一些未安装的依赖包
+### 2.测试依赖是否安装完全，eslint  test.js（自定义一个不规范的文件如.js .vue）会提示一些未安装的依赖包
 ```
-   
    然后按步骤1全局补充安装
 ```
  
@@ -30,18 +25,14 @@ npm install -g eslint-plugin-node
 ### 4.接下来，需要对sublime-text进行相关包的安装：
    按ctrl+shift+P 打开包仓库 输入 'install package'安装下面2个包
 ```
-    install package sublimeLinter
-    install package sublimeLinter-contrib-eslint
+   sublimeLinter
+   sublimeLinter-contrib-eslint
 ```
 
-
-### 5.设置检验报错方式：sublime-text里面文件点右键sublimeLinter设置lint mode 选择 save only ，保存时候可见
-
+### 5.设置检验报错方式：
+sublime-text里面文件点右键选中`sublimeLinter`,选中`lint mode` 选择 `save only` ，保存时候可见。
 
 ### 6.配置.eslintrc文件（可见eslint官网）
-推荐配置：打开文件对应的命令行 eslint --intit  => use a popular style => standard => javascropt
-
-然后生成一个.eslintrc.js在根目录
 
 推荐修改
 
@@ -81,5 +72,11 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
   }
 }
-
 ```
+
+你也可以打开文件对应的命令行 eslint --intit  => use a popular style => standard => javascript
+
+然后生成一个.eslintrc.js在根目录
+
+### 在sublime编辑器里面采用eslint代码规范校验报错 
+推荐链接[http://www.jianshu.com/p/c94db34e525b]
