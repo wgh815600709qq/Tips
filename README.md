@@ -18,4 +18,5 @@
  自动化构建（架构方向）、
  自动化工具搭建、
  自动化组件库、
+ vue-electron[https://electron.org.cn/vue/index.html]
 
